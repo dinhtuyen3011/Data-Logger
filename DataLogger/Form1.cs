@@ -63,7 +63,9 @@ namespace DataLogger
             chart1.ChartAreas[0].CursorX.LineColor = Color.Gray;
             chart1.ChartAreas[0].AxisX.ScaleView.MinSize = 1;
             chart1.ChartAreas[0].AxisX.ScaleView.SmallScrollMinSize = 1;
-
+            
+            chart1.ChartAreas[0].AxisX.MajorTickMark.Enabled = false;
+            chart1.ChartAreas[0].AxisY.MajorTickMark.Enabled = false;
             chart1.ChartAreas[0].AxisY.ScaleView.Zoomable = true;
             chart1.ChartAreas[0].AxisY.ScrollBar.IsPositionedInside = true;
             chart1.ChartAreas[0].CursorY.AutoScroll = true;
@@ -83,6 +85,7 @@ namespace DataLogger
             Channel3_Series.Enabled = false;
             Channel4_Series.Enabled = false;
             chart1.MouseWheel += Chart1_MouseWheel;
+            CheckForIllegalCrossThreadCalls = false;
         }
         //chart zoom in zoom out
         private void Chart1_MouseWheel(object sender, MouseEventArgs e)
@@ -203,9 +206,9 @@ namespace DataLogger
                             }
                             asciiBuff = "";
                             if (channelIndex > 0)
-                            {
-                                
+                            {                                
                                 GraphDraw();
+                                //GraphDraw_Chart2();
                                 DataSave();
                                 Data_Sample = (int)channel[0];
                                 channelIndex = 0;
@@ -238,15 +241,43 @@ namespace DataLogger
         private void chếĐộCuộnToolStripMenuItem_CheckStateChanged(object sender, EventArgs e)
         {
             Mode = 1;
-            
         }
         private void chếĐộCốĐịnhToolStripMenuItem_CheckStateChanged(object sender, EventArgs e)
         {
-            Mode = 0;
-            
+            Mode = 0; 
         }
         //
-        int a = 0;
+        int Mode2 = 0;
+        private string functionToCalculate = "";
+        int type = 0;
+        List<int> index = new List<int>();
+        private void InteractiveSignal_Click(object sender, EventArgs e)
+        {
+            FormToInteractiveSignal interactive = new FormToInteractiveSignal();
+            interactive.ShowDialog();
+            functionToCalculate = interactive.funct;
+            if (functionToCalculate != "")
+            {
+                
+                if (functionToCalculate.Contains("S1"))
+                {
+                    functionToCalculate = functionToCalculate.Replace("S1", "channel1");
+                }
+                if (functionToCalculate.Contains("S2"))
+                {
+                    functionToCalculate = functionToCalculate.Replace("S2", "channel2");
+                }
+                if (functionToCalculate.Contains("S3"))
+                {
+                    functionToCalculate = functionToCalculate.Replace("S3", "channel3");
+                }
+                if (functionToCalculate.Contains("S4"))
+                {
+                    functionToCalculate = functionToCalculate.Replace("S4", "channel4");
+                }
+                Mode2 = 1;
+            }
+        }
         //draw chart
         private void GraphDraw()
         {
@@ -290,8 +321,7 @@ namespace DataLogger
                                 Channel3_Series.Points.Clear();
                                 Channel4_Series.Points.Clear();
                             }
-                        }
-                        
+                        }      
                     }
                     channel1_list.Clear();
                     channel2_list.Clear();
@@ -300,6 +330,8 @@ namespace DataLogger
                 }));
             }
         }
+        //private int Data_Counter1 = 0;
+        //private int Point_axisX_Chart2 = 0;
         //display time now and data rate
         private void Timer_Tick(object sender, EventArgs e)
         {
@@ -497,5 +529,6 @@ namespace DataLogger
             }
         }
         #endregion
+        
     }
 }

@@ -55,6 +55,7 @@
             this.ModeAxisX = new System.Windows.Forms.ToolStripDropDownButton();
             this.chếĐộCuộnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chếĐộCốĐịnhToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.InteractiveSignal = new System.Windows.Forms.ToolStripButton();
             this.Timer = new System.Windows.Forms.Timer(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -109,7 +110,7 @@
             this.chart1.Series.Add(series2);
             this.chart1.Series.Add(series3);
             this.chart1.Series.Add(series4);
-            this.chart1.Size = new System.Drawing.Size(788, 371);
+            this.chart1.Size = new System.Drawing.Size(800, 381);
             this.chart1.TabIndex = 2;
             this.chart1.Text = "chart1";
             this.chart1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Chart1_MouseWheel);
@@ -122,10 +123,11 @@
             this.Connect,
             this.DropDown_TimeToSaveData,
             this.toolStripMenuItem_chart1,
-            this.ModeAxisX});
+            this.ModeAxisX,
+            this.InteractiveSignal});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(347, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(471, 25);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -265,16 +267,25 @@
             // chếĐộCuộnToolStripMenuItem
             // 
             this.chếĐộCuộnToolStripMenuItem.Name = "chếĐộCuộnToolStripMenuItem";
-            this.chếĐộCuộnToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.chếĐộCuộnToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.chếĐộCuộnToolStripMenuItem.Text = "Chế độ cuộn";
             this.chếĐộCuộnToolStripMenuItem.CheckStateChanged += new System.EventHandler(this.chếĐộCuộnToolStripMenuItem_CheckStateChanged);
             // 
             // chếĐộCốĐịnhToolStripMenuItem
             // 
             this.chếĐộCốĐịnhToolStripMenuItem.Name = "chếĐộCốĐịnhToolStripMenuItem";
-            this.chếĐộCốĐịnhToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.chếĐộCốĐịnhToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.chếĐộCốĐịnhToolStripMenuItem.Text = "Chế độ cố định";
             this.chếĐộCốĐịnhToolStripMenuItem.CheckStateChanged += new System.EventHandler(this.chếĐộCốĐịnhToolStripMenuItem_CheckStateChanged);
+            // 
+            // InteractiveSignal
+            // 
+            this.InteractiveSignal.Image = ((System.Drawing.Image)(resources.GetObject("InteractiveSignal.Image")));
+            this.InteractiveSignal.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.InteractiveSignal.Name = "InteractiveSignal";
+            this.InteractiveSignal.Size = new System.Drawing.Size(124, 22);
+            this.InteractiveSignal.Text = "Tương tác tín hiệu";
+            this.InteractiveSignal.Click += new System.EventHandler(this.InteractiveSignal_Click);
             // 
             // Timer
             // 
@@ -399,6 +410,7 @@
         private System.Windows.Forms.ToolStripDropDownButton ModeAxisX;
         private System.Windows.Forms.ToolStripMenuItem chếĐộCuộnToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem chếĐộCốĐịnhToolStripMenuItem;
+        private System.Windows.Forms.ToolStripButton InteractiveSignal;
     }
 }
 
